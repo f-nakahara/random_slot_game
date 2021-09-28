@@ -10,7 +10,7 @@ class TargetInteractor extends StateNotifier<AsyncValue<List<Target>>> {
   final ITargetRepository _repository;
 
   /// 全てのターゲットを取得する
-  Future<List<Target>> getAllPlayerList() async {
+  Future<List<Target>> getAllTargetList() async {
     final targets = await _repository.findAll();
     return targets;
   }

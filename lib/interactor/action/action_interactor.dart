@@ -11,42 +11,40 @@ class ActionInteractor extends StateNotifier<AsyncValue<List<Action>>> {
         super(const AsyncLoading());
   final IActionRepository _repository;
 
-  Future<List<Action>> getAllPenaltyList() async {
-    final penalties = await _repository.findAll();
-    return penalties;
+  Future<List<Action>> getAllActionList() async {
+    final actions = await _repository.findAll();
+    return actions;
   }
 
-  Future<Action> createPenalty({required String name}) async {
+  Future<Action> createAction({required String name}) async {
     final isDuplicated = await _isDuplicated(name: name);
     if (isDuplicated) {
       throw DuplicateException();
     } else {
       final id = const Uuid().v4();
       final date = DateTime.now();
-      final penalty = Action(
+      final action = Action(
         id: id,
         name: name,
         isSelected: true,
         createdAt: date,
         updatedAt: date,
       );
-      await _repository.save(penalty);
+      await _repository.save(action);
       final result = await _repository.find(id);
       return result;
     }
   }
 
-  /// ペナルティーを更新する
-  Future<Action> updatePenalty(String id, {required bool? isSelected}) async {
-    final oldPenalty = await _repository.find(id);
-    final newPenalty =
-        oldPenalty.copyWith(isSelected: isSelected ?? oldPenalty.isSelected);
-    await _repository.update(newPenalty);
-    return newPenalty;
+  Future<Action> updateAction(String id, {required bool? isSelected}) async {
+    final oldAction = await _repository.find(id);
+    final newAction =
+        oldAction.copyWith(isSelected: isSelected ?? oldAction.isSelected);
+    await _repository.update(newAction);
+    return newAction;
   }
 
-  /// ペナルティーを削除する
-  Future<void> deletePenalty(String id) async {
+  Future<void> deleteAction(String id) async {
     await _repository.delete(id);
   }
 

@@ -29,7 +29,7 @@ class ActionCreateFormController extends StateNotifier<ActionCreateFormState> {
 
   /// プレイヤーを作成する
   Future<void> create({required String name}) async {
-    await _interactor.createPenalty(name: name);
+    await _interactor.createAction(name: name);
   }
 
   /// バリデーション

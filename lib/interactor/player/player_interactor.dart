@@ -41,13 +41,8 @@ class PlayerInteractor extends StateNotifier<AsyncValue<List<Player>>> {
   /// プレイヤーを更新する
   Future<Player> updatePlayer(String id, {required bool? isSelected}) async {
     final oldPlayer = await _repository.find(id);
-    final newPlayer = Player(
-      id: id,
-      name: oldPlayer.name,
-      isSelected: isSelected ?? oldPlayer.isSelected,
-      createdAt: oldPlayer.createdAt,
-      updatedAt: oldPlayer.updatedAt,
-    );
+    final newPlayer =
+        oldPlayer.copyWith(isSelected: isSelected ?? oldPlayer.isSelected);
     await _repository.update(newPlayer);
     return newPlayer;
   }

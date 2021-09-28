@@ -24,11 +24,11 @@ class ActionListItemController {
 
   /// 参加・不参加
   Future<void> toggle() async {
-    await _interactor.updatePenalty(state.id, isSelected: !state.isSelected);
+    await _interactor.updateAction(state.id, isSelected: !state.isSelected);
   }
 
   /// 削除
   Future<void> delete() async {
-    await _interactor.deletePenalty(state.id);
+    await _interactor.deleteAction(state.id);
   }
 }
