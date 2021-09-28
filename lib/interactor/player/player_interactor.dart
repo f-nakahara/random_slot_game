@@ -36,10 +36,7 @@ class PlayerInteractor extends StateNotifier<AsyncValue<List<Player>>> {
       final asyncValue = state.data;
       if (asyncValue != null) {
         final players = asyncValue.value;
-        final index = players.indexWhere(
-          (element) => element.id == id,
-        );
-        players[index] = player;
+        players.add(player);
         state = AsyncData(players);
       }
     }

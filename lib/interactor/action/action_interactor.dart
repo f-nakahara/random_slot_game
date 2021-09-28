@@ -34,10 +34,7 @@ class ActionInteractor extends StateNotifier<AsyncValue<List<Action>>> {
       final asyncValue = state.data;
       if (asyncValue != null) {
         final actions = asyncValue.value;
-        final index = actions.indexWhere(
-          (element) => element.id == id,
-        );
-        actions[index] = action;
+        actions.add(action);
         state = AsyncData(actions);
       }
     }
