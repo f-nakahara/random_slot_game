@@ -11,12 +11,12 @@ class ActionInteractor extends StateNotifier<AsyncValue<List<Action>>> {
         super(const AsyncLoading());
   final IActionRepository _repository;
 
-  Future<List<Action>> getAllActionList() async {
+  Future<void> getAllActionList() async {
     final actions = await _repository.findAll();
-    return actions;
+    state = AsyncData(actions);
   }
 
-  Future<Action> createAction({required String name}) async {
+  Future<void> createAction({required String name}) async {
     final isDuplicated = await _isDuplicated(name: name);
     if (isDuplicated) {
       throw DuplicateException();
@@ -31,21 +31,42 @@ class ActionInteractor extends StateNotifier<AsyncValue<List<Action>>> {
         updatedAt: date,
       );
       await _repository.save(action);
-      final result = await _repository.find(id);
-      return result;
+      final asyncValue = state.data;
+      if (asyncValue != null) {
+        final actions = asyncValue.value;
+        final index = actions.indexWhere(
+          (element) => element.id == id,
+        );
+        actions[index] = action;
+        state = AsyncData(actions);
+      }
     }
   }
 
-  Future<Action> updateAction(String id, {required bool? isSelected}) async {
+  Future<void> updateAction(String id, {required bool? isSelected}) async {
     final oldAction = await _repository.find(id);
     final newAction =
         oldAction.copyWith(isSelected: isSelected ?? oldAction.isSelected);
     await _repository.update(newAction);
-    return newAction;
+    final asyncValue = state.data;
+    if (asyncValue != null) {
+      final actions = asyncValue.value;
+      final index = actions.indexWhere(
+        (element) => element.id == id,
+      );
+      actions[index] = newAction;
+      state = AsyncData(actions);
+    }
   }
 
   Future<void> deleteAction(String id) async {
     await _repository.delete(id);
+    final asyncValue = state.data;
+    if (asyncValue != null) {
+      final actions = asyncValue.value;
+      actions.removeWhere((element) => element.id == id);
+      state = AsyncData(actions);
+    }
   }
 
   /// 同じ名前のペナルティーが既に存在しているか確認

@@ -12,13 +12,13 @@ class PlayerInteractor extends StateNotifier<AsyncValue<List<Player>>> {
   final IPlayerRepository _repository;
 
   /// 全てのプレイヤーを取得する
-  Future<List<Player>> getAllPlayerList() async {
+  Future<void> getAllPlayerList() async {
     final players = await _repository.findAll();
-    return players;
+    state = AsyncData(players);
   }
 
   /// プレイヤーを作成する
-  Future<Player> createPlayer({required String name}) async {
+  Future<void> createPlayer({required String name}) async {
     final isDuplicated = await _isDuplicated(name: name);
     if (isDuplicated) {
       throw DuplicateException();
@@ -33,23 +33,44 @@ class PlayerInteractor extends StateNotifier<AsyncValue<List<Player>>> {
         updatedAt: date,
       );
       await _repository.save(player);
-      final result = await _repository.find(id);
-      return result;
+      final asyncValue = state.data;
+      if (asyncValue != null) {
+        final players = asyncValue.value;
+        final index = players.indexWhere(
+          (element) => element.id == id,
+        );
+        players[index] = player;
+        state = AsyncData(players);
+      }
     }
   }
 
   /// プレイヤーを更新する
-  Future<Player> updatePlayer(String id, {required bool? isSelected}) async {
+  Future<void> updatePlayer(String id, {required bool? isSelected}) async {
     final oldPlayer = await _repository.find(id);
     final newPlayer =
         oldPlayer.copyWith(isSelected: isSelected ?? oldPlayer.isSelected);
     await _repository.update(newPlayer);
-    return newPlayer;
+    final asyncValue = state.data;
+    if (asyncValue != null) {
+      final players = asyncValue.value;
+      final index = players.indexWhere(
+        (element) => element.id == id,
+      );
+      players[index] = newPlayer;
+      state = AsyncData(players);
+    }
   }
 
   /// プレイヤーを削除する
   Future<void> deletePlayer(String id) async {
     await _repository.delete(id);
+    final asyncValue = state.data;
+    if (asyncValue != null) {
+      final players = asyncValue.value;
+      players.removeWhere((element) => element.id == id);
+      state = AsyncData(players);
+    }
   }
 
   /// 同じ名前のプレイヤーが既に存在しているか確認
