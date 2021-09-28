@@ -1,16 +1,17 @@
 import 'package:random_slot_game/domain/entity/player/player.dart';
 import 'package:random_slot_game/domain/repository/i_player_repository.dart';
+import 'package:random_slot_game/infrastructure/datasource/player_sqflite/i_player_sqflite.dart';
 
 class PlayerRepository implements IPlayerRepository {
   PlayerRepository({
-    required IPlayerDatasource localDatasource,
-  }) : _localDatasource = localDatasource;
+    required IPlayerSqflite sqf,
+  }) : _sqf = sqf;
 
-  final IPlayerDatasource _localDatasource;
+  final IPlayerSqflite _sqf;
   @override
   Future<Player> find(String id) async {
     try {
-      final data = await _localDatasource.find(id);
+      final data = await _sqf.find(id);
       final player = data.toEntity();
       return player;
     } catch (e) {
@@ -20,7 +21,7 @@ class PlayerRepository implements IPlayerRepository {
 
   @override
   Future<Player?> findByName(String name) async {
-    final result = await _localDatasource.findByName(name);
+    final result = await _sqf.findByName(name);
     if (result != null) {
       final player = result.toEntity();
       return player;
@@ -30,7 +31,7 @@ class PlayerRepository implements IPlayerRepository {
   @override
   Future<List<Player>> findAll() async {
     try {
-      final data = await _localDatasource.findAll();
+      final data = await _sqf.findAll();
       return data.map((e) => e.toEntity()).toList();
     } catch (e) {
       rethrow;
@@ -40,7 +41,7 @@ class PlayerRepository implements IPlayerRepository {
   @override
   Future<void> save(Player player) async {
     try {
-      await _localDatasource.save(player);
+      await _sqf.save(player);
     } catch (e) {
       rethrow;
     }
@@ -49,7 +50,7 @@ class PlayerRepository implements IPlayerRepository {
   @override
   Future<void> update(Player player) async {
     try {
-      await _localDatasource.update(player);
+      await _sqf.update(player);
     } catch (e) {
       rethrow;
     }
@@ -58,7 +59,7 @@ class PlayerRepository implements IPlayerRepository {
   @override
   Future<void> delete(String id) async {
     try {
-      await _localDatasource.delete(id);
+      await _sqf.delete(id);
     } catch (e) {
       rethrow;
     }
