@@ -1,11 +1,13 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:random_slot_game/interactor/player/player_interactor.dart';
+import 'package:random_slot_game/interactor/player/player_interactor_provider.dart';
 import 'package:random_slot_game/presentation/player_setting/widget/player_list_item/player_list_item_state.dart';
 
 final playerListItemController =
     Provider.autoDispose.family<PlayerListItemController, PlayerListItemState>(
   (ref, state) {
     return PlayerListItemController(
-      controller: ref.read(playerController.notifier),
+      controller: ref.read(playerInteractorProvider.notifier),
       state: state,
     );
   },
@@ -13,11 +15,11 @@ final playerListItemController =
 
 class PlayerListItemController {
   PlayerListItemController({
-    required PlayerController controller,
+    required PlayerInteractor controller,
     required this.state,
   }) : _controller = controller;
 
-  final PlayerController _controller;
+  final PlayerInteractor _controller;
   final PlayerListItemState state;
 
   /// 参加・不参加

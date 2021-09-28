@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SlotReplayButton extends StatelessWidget {
-  const SlotReplayButton({Key? key}) : super(key: key);
+class SlotControlButton extends StatelessWidget {
+  const SlotControlButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

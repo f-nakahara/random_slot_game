@@ -3,9 +3,13 @@ import 'dart:isolate';
 import 'dart:math';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:random_slot_game/interactor/action/action_interactor_provider.dart';
+import 'package:random_slot_game/interactor/player/player_interactor_provider.dart';
+import 'package:random_slot_game/interactor/target/target_interactor_provider.dart';
+import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item_state.dart';
 
-final slotListItemViewModel = StateNotifierProvider.autoDispose
-    .family<SlotListItemViewModel, SlotListItemState, SlotListItemType>(
+final slotListItemController = StateNotifierProvider.autoDispose
+    .family<SlotListItemController, SlotListItemState, SlotListItemType>(
   (ref, type) {
     ref.onDispose(() {
       /// dispose時にisolateをkill
@@ -15,7 +19,7 @@ final slotListItemViewModel = StateNotifierProvider.autoDispose
     switch (type) {
       case SlotListItemType.player:
         values = ref
-                .watch(playerController)
+                .watch(playerInteractorProvider)
                 .data
                 ?.value
                 .map((e) => e.name)
@@ -24,16 +28,16 @@ final slotListItemViewModel = StateNotifierProvider.autoDispose
         break;
       case SlotListItemType.target:
         values = ref
-                .watch(targetController)
+                .watch(targetInteractorProvider)
                 .data
                 ?.value
                 .map((e) => e.name)
                 .toList() ??
             [];
         break;
-      case SlotListItemType.penalty:
+      case SlotListItemType.action:
         values = ref
-                .watch(penaltyController)
+                .watch(actionInteractorProvider)
                 .data
                 ?.value
                 .map((e) => e.name)
@@ -42,7 +46,7 @@ final slotListItemViewModel = StateNotifierProvider.autoDispose
     }
     final value = values[Random().nextInt(values.length)];
     final state = SlotListItemState(type: type, value: value);
-    return SlotListItemViewModel(
+    return SlotListItemController(
       state,
       values: values,
       type: type,
@@ -50,8 +54,8 @@ final slotListItemViewModel = StateNotifierProvider.autoDispose
   },
 );
 
-class SlotListItemViewModel extends StateNotifier<SlotListItemState> {
-  SlotListItemViewModel(
+class SlotListItemController extends StateNotifier<SlotListItemState> {
+  SlotListItemController(
     SlotListItemState state, {
     required this.values,
     required this.type,

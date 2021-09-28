@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item.dart';
+import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item_state.dart';
 
 class SlotList extends StatelessWidget {
   const SlotList({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class SlotList extends StatelessWidget {
       children: const [
         SlotListItem(SlotListItemType.player),
         SlotListItem(SlotListItemType.target),
-        SlotListItem(SlotListItemType.penalty),
+        SlotListItem(SlotListItemType.action),
       ],
     );
   }

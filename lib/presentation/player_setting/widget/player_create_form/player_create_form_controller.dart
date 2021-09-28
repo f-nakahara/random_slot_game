@@ -1,14 +1,16 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:random_slot_game/core/l10n/app_localization.dart';
+import 'package:random_slot_game/interactor/player/player_interactor.dart';
+import 'package:random_slot_game/interactor/player/player_interactor_provider.dart';
 import 'package:random_slot_game/presentation/player_setting/widget/player_create_form/player_create_form_state.dart';
 
 final playerCreateFormController = StateNotifierProvider.autoDispose<
     PlayerCreateFormController, PlayerCreateFormState>(
   (ref) {
-    final players = ref.watch(playerController).data?.value ?? [];
+    final players = ref.watch(playerInteractorProvider).data?.value ?? [];
     final playerNames = players.map((e) => e.name).toList();
     return PlayerCreateFormController(
-      ref.read(playerController.notifier),
+      ref.read(playerInteractorProvider.notifier),
       playerNames: playerNames,
     );
   },
@@ -21,7 +23,7 @@ class PlayerCreateFormController extends StateNotifier<PlayerCreateFormState> {
   })  : _playerNames = playerNames,
         super(const PlayerCreateFormState());
 
-  final PlayerController _controller;
+  final PlayerInteractor _controller;
   final maxNameLength = 20;
   final List<String> _playerNames;
 

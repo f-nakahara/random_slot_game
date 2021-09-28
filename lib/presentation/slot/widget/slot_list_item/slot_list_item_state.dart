@@ -6,6 +6,7 @@ part 'slot_list_item_state.freezed.dart';
 class SlotListItemState with _$SlotListItemState {
   const factory SlotListItemState({
     required SlotListItemType type,
+    required String value,
   }) = _SlotListItemState;
 }
 

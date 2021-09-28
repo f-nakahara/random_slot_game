@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:random_slot_game/core/l10n/app_localization.dart';
 import 'package:random_slot_game/core/util/navigator_util.dart';
 import 'package:random_slot_game/presentation/game_setting/game_setting_page.dart';
+import 'package:random_slot_game/presentation/slot/slot_page.dart';
 import 'package:sizer/sizer.dart';
 
 /// ホーム画面

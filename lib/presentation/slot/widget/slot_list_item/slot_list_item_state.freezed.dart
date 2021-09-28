@@ -17,9 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SlotListItemStateTearOff {
   const _$SlotListItemStateTearOff();
 
-  _SlotListItemState call({required SlotListItemTypes type}) {
+  _SlotListItemState call(
+      {required SlotListItemType type, required String value}) {
     return _SlotListItemState(
       type: type,
+      value: value,
     );
   }
 }
@@ -29,7 +31,8 @@ const $SlotListItemState = _$SlotListItemStateTearOff();
 
 /// @nodoc
 mixin _$SlotListItemState {
-  SlotListItemTypes get type => throw _privateConstructorUsedError;
+  SlotListItemType get type => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SlotListItemStateCopyWith<SlotListItemState> get copyWith =>
@@ -41,7 +44,7 @@ abstract class $SlotListItemStateCopyWith<$Res> {
   factory $SlotListItemStateCopyWith(
           SlotListItemState value, $Res Function(SlotListItemState) then) =
       _$SlotListItemStateCopyWithImpl<$Res>;
-  $Res call({SlotListItemTypes type});
+  $Res call({SlotListItemType type, String value});
 }
 
 /// @nodoc
@@ -56,12 +59,17 @@ class _$SlotListItemStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? type = freezed,
+    Object? value = freezed,
   }) {
     return _then(_value.copyWith(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as SlotListItemTypes,
+              as SlotListItemType,
+      value: value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -73,7 +81,7 @@ abstract class _$SlotListItemStateCopyWith<$Res>
           _SlotListItemState value, $Res Function(_SlotListItemState) then) =
       __$SlotListItemStateCopyWithImpl<$Res>;
   @override
-  $Res call({SlotListItemTypes type});
+  $Res call({SlotListItemType type, String value});
 }
 
 /// @nodoc
@@ -90,12 +98,17 @@ class __$SlotListItemStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? type = freezed,
+    Object? value = freezed,
   }) {
     return _then(_SlotListItemState(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as SlotListItemTypes,
+              as SlotListItemType,
+      value: value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -103,14 +116,16 @@ class __$SlotListItemStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SlotListItemState implements _SlotListItemState {
-  const _$_SlotListItemState({required this.type});
+  const _$_SlotListItemState({required this.type, required this.value});
 
   @override
-  final SlotListItemTypes type;
+  final SlotListItemType type;
+  @override
+  final String value;
 
   @override
   String toString() {
-    return 'SlotListItemState(type: $type)';
+    return 'SlotListItemState(type: $type, value: $value)';
   }
 
   @override
@@ -118,12 +133,16 @@ class _$_SlotListItemState implements _SlotListItemState {
     return identical(this, other) ||
         (other is _SlotListItemState &&
             (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)));
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.value, value) ||
+                const DeepCollectionEquality().equals(other.value, value)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(type);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(value);
 
   @JsonKey(ignore: true)
   @override
@@ -132,11 +151,14 @@ class _$_SlotListItemState implements _SlotListItemState {
 }
 
 abstract class _SlotListItemState implements SlotListItemState {
-  const factory _SlotListItemState({required SlotListItemTypes type}) =
-      _$_SlotListItemState;
+  const factory _SlotListItemState(
+      {required SlotListItemType type,
+      required String value}) = _$_SlotListItemState;
 
   @override
-  SlotListItemTypes get type => throw _privateConstructorUsedError;
+  SlotListItemType get type => throw _privateConstructorUsedError;
+  @override
+  String get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SlotListItemStateCopyWith<_SlotListItemState> get copyWith =>
