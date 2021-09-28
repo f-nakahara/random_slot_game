@@ -14,6 +14,7 @@ class GameSettingButton extends StatelessWidget {
     final localization = AppLocalization.of(context)!;
     return LargeButton(
       text: localization.gameSettingTitle,
+      isOutlined: true,
       onPressed: () {
         NavigatorUtil.push(
           context,
