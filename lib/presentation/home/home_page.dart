@@ -52,7 +52,7 @@ class _Introduction extends StatelessWidget {
           ),
         ),
         _buildStep(
-          stepNumber: 3,
+          stepNumber: 2,
           text: localization.startIntroductionStep2(localization.start),
         ),
       ],
