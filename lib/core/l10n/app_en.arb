@@ -1,0 +1,54 @@
+{
+  "@@locale": "en",
+
+  "player": "Player",
+  "action": "Action",
+  "checkExplanation": "Please check the {subject} to use.",
+  "@checkExplanation": {
+    "placeholders": {
+      "subject": {}
+    }
+  },
+  "addExplanation": "Press the 「+」 button to add a new {subject}.",
+  "@addExplanation": {
+    "placeholders": {
+      "subject": {}
+    }
+  },
+  "createTitle": "Create {subject}",
+  "@createTitle": {
+    "placeholders": {
+      "subject": {}
+    }
+  },
+  "deletionNotice":"Do you really want to delete this?",
+  "delete": "Delete",
+  "cancel": "Cancel",
+  "close": "Close",
+  "create": "Create",
+  "emptyErrorText": "Please fill in the value",
+  "maxLengthErrorText": "Please enter within {length} characters",
+  "@maxLengthErrorText": {
+    "placeholders": {
+      "length": {}
+    }
+  },
+  "duplicateErrorText": "It has already been created",
+  "start": "START",
+  "gameSettingTitle": " Game Setting",
+  "startIntroductionTitle": "For those who play for the first time",
+  "startIntroductionStep1": "Determine the {player} and {penalty} game from the 「{gameSettingTitle}」.",
+  "@startIntroductionStep1": {
+    "placeholders": {
+      "player": {},
+      "penalty": {},
+      "gameSettingTitle": {}
+    }
+  },
+  "startIntroductionStep2": "Tap Start to 「{start}」 the game!",
+  "@startIntroductionStep2": {
+    "placeholders": {
+      "start": {}
+    }
+  }
+}

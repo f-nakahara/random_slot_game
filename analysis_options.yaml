@@ -1,0 +1,13 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    import_of_legacy_library_into_null_safe: false
+    invalid_annotation_target: ignore
+
+  exclude:
+    - "**.g.dart"
+    - "**.freezed.dart"
+
+linter:
+  rules:

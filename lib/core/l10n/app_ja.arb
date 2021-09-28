@@ -1,0 +1,54 @@
+{
+  "@@locale": "ja",
+
+  "player": "プレイヤー",
+  "action": "アクション",
+  "checkExplanation": "使用する{subject}にチェックを入れてください。",
+  "@checkExplanation": {
+    "placeholders": {
+      "subject": {}
+    }
+  },
+  "addExplanation": "{subject}を新しく追加する場合は「+」ボタンを押してください。",
+  "@addExplanation": {
+    "placeholders": {
+      "subject": {}
+    }
+  },
+  "createTitle": "{subject}作成",
+  "@createTitle": {
+    "placeholders": {
+      "subject": {}
+    }
+  },
+  "deletionNotice":"本当に削除しますか？",
+  "delete": "削除",
+  "cancel": "キャンセル",
+  "close": "閉じる",
+  "create": "作成",
+  "emptyErrorText": "値を入力してください",
+  "maxLengthErrorText": "{length}文字以内で入力してください",
+  "@maxLengthErrorText": {
+    "placeholders": {
+      "length": {}
+    }
+  },
+  "duplicateErrorText": "既に作成済みです",
+  "start": "はじめる",
+  "gameSettingTitle": " ゲーム設定",
+  "startIntroductionTitle": "はじめてプレイする方へ",
+  "startIntroductionStep1": "「{gameSettingTitle}」から{player}と{penalty}を決める。",
+  "@startIntroductionStep1": {
+    "placeholders": {
+      "player": {},
+      "penalty": {},
+      "gameSettingTitle": {}
+    }
+  },
+  "startIntroductionStep2": "「{start}」をタップでゲームスタート！",
+  "@startIntroductionStep2": {
+    "placeholders": {
+      "start": {}
+    }
+  }
+}
