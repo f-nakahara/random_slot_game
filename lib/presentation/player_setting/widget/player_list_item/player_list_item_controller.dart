@@ -7,7 +7,7 @@ final playerListItemController =
     Provider.autoDispose.family<PlayerListItemController, PlayerListItemState>(
   (ref, state) {
     return PlayerListItemController(
-      controller: ref.read(playerInteractorProvider.notifier),
+      interactor: ref.read(playerInteractorProvider.notifier),
       state: state,
     );
   },
@@ -15,20 +15,20 @@ final playerListItemController =
 
 class PlayerListItemController {
   PlayerListItemController({
-    required PlayerInteractor controller,
+    required PlayerInteractor interactor,
     required this.state,
-  }) : _controller = controller;
+  }) : _interactor = interactor;
 
-  final PlayerInteractor _controller;
+  final PlayerInteractor _interactor;
   final PlayerListItemState state;
 
   /// 参加・不参加
   Future<void> toggle() async {
-    await _controller.updatePlayer(state.id, isSelected: !state.isSelected);
+    await _interactor.updatePlayer(state.id, isSelected: !state.isSelected);
   }
 
   /// 削除
   Future<void> delete() async {
-    await _controller.deletePlayer(state.id);
+    await _interactor.deletePlayer(state.id);
   }
 }

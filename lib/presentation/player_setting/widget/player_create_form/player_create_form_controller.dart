@@ -18,18 +18,18 @@ final playerCreateFormController = StateNotifierProvider.autoDispose<
 
 class PlayerCreateFormController extends StateNotifier<PlayerCreateFormState> {
   PlayerCreateFormController(
-    this._controller, {
+    this._interactor, {
     required List<String> playerNames,
   })  : _playerNames = playerNames,
         super(const PlayerCreateFormState());
 
-  final PlayerInteractor _controller;
+  final PlayerInteractor _interactor;
   final maxNameLength = 20;
   final List<String> _playerNames;
 
   /// プレイヤーを作成する
   Future<void> create({required String name}) async {
-    await _controller.createPlayer(name: name);
+    await _interactor.createPlayer(name: name);
   }
 
   /// バリデーション

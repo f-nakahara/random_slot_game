@@ -7,7 +7,7 @@ final actionListItemController =
     Provider.autoDispose.family<ActionListItemController, ActionListItemState>(
   (ref, state) {
     return ActionListItemController(
-      controller: ref.read(actionInteractorProvider.notifier),
+      interactor: ref.read(actionInteractorProvider.notifier),
       state: state,
     );
   },
@@ -15,20 +15,20 @@ final actionListItemController =
 
 class ActionListItemController {
   ActionListItemController({
-    required ActionInteractor controller,
+    required ActionInteractor interactor,
     required this.state,
-  }) : _controller = controller;
+  }) : _interactor = interactor;
 
-  final ActionInteractor _controller;
+  final ActionInteractor _interactor;
   final ActionListItemState state;
 
   /// 参加・不参加
   Future<void> toggle() async {
-    await _controller.updatePenalty(state.id, isSelected: !state.isSelected);
+    await _interactor.updatePenalty(state.id, isSelected: !state.isSelected);
   }
 
   /// 削除
   Future<void> delete() async {
-    await _controller.deletePenalty(state.id);
+    await _interactor.deletePenalty(state.id);
   }
 }

@@ -18,18 +18,18 @@ final actionCreateFormController = StateNotifierProvider.autoDispose<
 
 class ActionCreateFormController extends StateNotifier<ActionCreateFormState> {
   ActionCreateFormController(
-    this._controller, {
+    this._interactor, {
     required List<String> playerNames,
   })  : _penaltyNames = playerNames,
         super(const ActionCreateFormState());
 
-  final ActionInteractor _controller;
+  final ActionInteractor _interactor;
   final maxNameLength = 100;
   final List<String> _penaltyNames;
 
   /// プレイヤーを作成する
   Future<void> create({required String name}) async {
-    await _controller.createPenalty(name: name);
+    await _interactor.createPenalty(name: name);
   }
 
   /// バリデーション

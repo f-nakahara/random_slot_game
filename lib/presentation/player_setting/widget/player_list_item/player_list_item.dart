@@ -13,17 +13,17 @@ class PlayerListItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final vm = ref.read(playerListItemController(state));
+    final controller = ref.read(playerListItemController(state));
     return CheckBoxCard(
       title: state.name,
-      onTap: (_) => vm.toggle(),
+      onTap: (_) => controller.toggle(),
       onDelete: () {
         showDialog(
           context: context,
           builder: (context) {
             return DeleteDialog(
               onDelete: () async {
-                await vm.delete();
+                await controller.delete();
                 NavigatorUtil.pop(context);
               },
               playerName: state.name,
