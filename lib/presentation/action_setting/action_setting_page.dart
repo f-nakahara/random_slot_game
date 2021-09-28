@@ -12,26 +12,40 @@ class ActionSettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localization = AppLocalization.of(context)!;
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(AppConstant.normalPaddingValue),
-              child: Column(
-                children: [
-                  CheckExplanation(subject: localization.action),
-                  const SizedBox(height: 5),
-                  AddExplanation(subject: localization.action),
-                ],
-              ),
-            ),
-            const Expanded(child: ActionList()),
+          children: const [
+            /// 説明文
+            _Explanation(),
+
+            /// アクション一覧
+            Expanded(child: ActionList()),
           ],
         ),
       ),
+
+      /// アクション作成ボタン
       floatingActionButton: const ActionCreateButton(),
+    );
+  }
+}
+
+class _Explanation extends StatelessWidget {
+  const _Explanation({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final localization = AppLocalization.of(context)!;
+    return Padding(
+      padding: const EdgeInsets.all(AppConstant.normalPaddingValue),
+      child: Column(
+        children: [
+          CheckExplanation(subject: localization.action),
+          const SizedBox(height: 5),
+          AddExplanation(subject: localization.action),
+        ],
+      ),
     );
   }
 }

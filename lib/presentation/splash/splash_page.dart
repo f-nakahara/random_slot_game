@@ -13,9 +13,11 @@ class SplashPage extends ConsumerWidget {
       body: FutureBuilder(
         future: state.init(),
         builder: (context, snapshot) {
+          /// 初期処理が終了したら画面を切り替える
           if (snapshot.connectionState == ConnectionState.done) {
             return const HomePage();
           }
+          // TODO: アプリアイコン等の表示
           return Text('$runtimeType');
         },
       ),

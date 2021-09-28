@@ -15,29 +15,25 @@ class GameSettingPage extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(localization.gameSettingTitle),
-        bottom: _buildTabBar(controller, localization),
+
+        /// 設定する項目
+        bottom: TabBar(
+          controller: controller,
+          tabs: [
+            Tab(text: localization.player),
+            Tab(text: localization.action),
+          ],
+        ),
       ),
-      body: _buildBody(controller),
-    );
-  }
 
-  TabBarView _buildBody(TabController controller) {
-    return TabBarView(
-      controller: controller,
-      children: const [
-        PlayerSettingPage(),
-        ActionSettingPage(),
-      ],
-    );
-  }
-
-  TabBar _buildTabBar(TabController controller, AppLocalization localization) {
-    return TabBar(
-      controller: controller,
-      tabs: [
-        Tab(text: localization.player),
-        Tab(text: localization.action),
-      ],
+      /// 設定画面
+      body: TabBarView(
+        controller: controller,
+        children: const [
+          PlayerSettingPage(),
+          ActionSettingPage(),
+        ],
+      ),
     );
   }
 }

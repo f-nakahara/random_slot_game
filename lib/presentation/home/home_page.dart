@@ -17,10 +17,15 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
+              /// 初めての方へ
               _Introduction(),
               SizedBox(height: 80),
+
+              /// スタートボタン
               StartButton(),
               SizedBox(height: 10),
+
+              /// 設定ボタン
               GameSettingButton(),
             ],
           ),

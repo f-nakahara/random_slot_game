@@ -16,8 +16,11 @@ class SlotPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
+            /// スロット項目一覧
             SlotList(),
             SizedBox(height: 50),
+
+            /// スロット制御ボタン
             SlotControlButton(),
           ],
         ),

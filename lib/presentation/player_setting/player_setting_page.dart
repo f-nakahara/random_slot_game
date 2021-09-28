@@ -12,26 +12,40 @@ class PlayerSettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localization = AppLocalization.of(context)!;
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(AppConstant.normalPaddingValue),
-              child: Column(
-                children: [
-                  CheckExplanation(subject: localization.player),
-                  const SizedBox(height: 5),
-                  AddExplanation(subject: localization.player),
-                ],
-              ),
-            ),
-            const Expanded(child: PlayerList()),
+          children: const [
+            /// 説明文
+            _Explanation(),
+
+            /// プレイヤー一覧
+            Expanded(child: PlayerList()),
           ],
         ),
       ),
+
+      /// プレイヤー作成ボタン
       floatingActionButton: const PlayerCreateButton(),
+    );
+  }
+}
+
+class _Explanation extends StatelessWidget {
+  const _Explanation({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final localization = AppLocalization.of(context)!;
+    return Padding(
+      padding: const EdgeInsets.all(AppConstant.normalPaddingValue),
+      child: Column(
+        children: [
+          CheckExplanation(subject: localization.player),
+          const SizedBox(height: 5),
+          AddExplanation(subject: localization.player),
+        ],
+      ),
     );
   }
 }
