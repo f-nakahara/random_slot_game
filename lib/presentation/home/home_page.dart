@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:random_slot_game/core/l10n/app_localization.dart';
-import 'package:random_slot_game/core/util/navigator_util.dart';
-import 'package:random_slot_game/presentation/game_setting/game_setting_page.dart';
-import 'package:random_slot_game/presentation/slot/slot_page.dart';
+import 'package:random_slot_game/presentation/home/widget/game_setting_button/game_setting_button.dart';
+import 'package:random_slot_game/presentation/home/widget/start_button/start_button.dart';
 import 'package:sizer/sizer.dart';
 
 /// ホーム画面
@@ -20,68 +19,10 @@ class HomePage extends StatelessWidget {
             children: const [
               _Introduction(),
               SizedBox(height: 80),
-              _StartButton(),
+              StartButton(),
               SizedBox(height: 10),
-              _GameSettingButton(),
+              GameSettingButton(),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _GameSettingButton extends StatelessWidget {
-  const _GameSettingButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final localization = AppLocalization.of(context)!;
-    return SizedBox(
-      width: double.infinity,
-      height: 8.h,
-      child: OutlinedButton(
-        onPressed: () {
-          NavigatorUtil.push(
-            context,
-            page: const GameSettingPage(),
-          );
-        },
-        child: Text(
-          localization.gameSettingTitle,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 15.sp,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _StartButton extends StatelessWidget {
-  const _StartButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final localization = AppLocalization.of(context)!;
-    return SizedBox(
-      width: double.infinity,
-      height: 8.h,
-      child: ElevatedButton(
-        onPressed: () {
-          NavigatorUtil.push(context, page: const SlotPage());
-        },
-        style: ElevatedButton.styleFrom(),
-        child: Text(
-          localization.start,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 15.sp,
           ),
         ),
       ),
