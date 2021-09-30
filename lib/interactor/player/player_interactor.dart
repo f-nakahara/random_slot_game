@@ -4,7 +4,10 @@ import 'package:random_slot_game/domain/entity/player/player.dart';
 import 'package:random_slot_game/domain/repository/i_player_repository.dart';
 import 'package:uuid/uuid.dart';
 
-class PlayerInteractor extends StateNotifier<AsyncValue<List<Player>>> {
+import 'player_interactor_state.dart';
+
+class PlayerInteractor
+    extends StateNotifier<AsyncValue<PlayerInteractorState>> {
   PlayerInteractor({
     required IPlayerRepository repository,
   })  : _repository = repository,
@@ -14,7 +17,7 @@ class PlayerInteractor extends StateNotifier<AsyncValue<List<Player>>> {
   /// 全てのプレイヤーを取得する
   Future<void> getAllPlayerList() async {
     final players = await _repository.findAll();
-    state = AsyncData(players);
+    state = AsyncData(PlayerInteractorState(players: players));
   }
 
   /// プレイヤーを作成する
@@ -35,9 +38,10 @@ class PlayerInteractor extends StateNotifier<AsyncValue<List<Player>>> {
       await _repository.save(player);
       final asyncValue = state.data;
       if (asyncValue != null) {
-        final players = asyncValue.value;
-        players.add(player);
-        state = AsyncData(players);
+        final players = asyncValue.value.players;
+        state = AsyncData(
+          asyncValue.value.copyWith(players: [...players, player]),
+        );
       }
     }
   }
@@ -50,12 +54,14 @@ class PlayerInteractor extends StateNotifier<AsyncValue<List<Player>>> {
     await _repository.update(newPlayer);
     final asyncValue = state.data;
     if (asyncValue != null) {
-      final players = asyncValue.value;
+      final players = asyncValue.value.players;
       final index = players.indexWhere(
         (element) => element.id == id,
       );
       players[index] = newPlayer;
-      state = AsyncData(players);
+      state = AsyncData(
+        asyncValue.value.copyWith(players: players),
+      );
     }
   }
 
@@ -64,9 +70,11 @@ class PlayerInteractor extends StateNotifier<AsyncValue<List<Player>>> {
     await _repository.delete(id);
     final asyncValue = state.data;
     if (asyncValue != null) {
-      final players = asyncValue.value;
+      final players = asyncValue.value.players;
       players.removeWhere((element) => element.id == id);
-      state = AsyncData(players);
+      state = AsyncData(
+        asyncValue.value.copyWith(players: players),
+      );
     }
   }
 

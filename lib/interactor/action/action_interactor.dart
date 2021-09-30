@@ -4,7 +4,10 @@ import 'package:random_slot_game/domain/entity/action/action.dart';
 import 'package:random_slot_game/domain/repository/i_action_repository.dart';
 import 'package:uuid/uuid.dart';
 
-class ActionInteractor extends StateNotifier<AsyncValue<List<Action>>> {
+import 'action_interactor_state.dart';
+
+class ActionInteractor
+    extends StateNotifier<AsyncValue<ActionInteractorState>> {
   ActionInteractor({
     required IActionRepository repository,
   })  : _repository = repository,
@@ -13,7 +16,7 @@ class ActionInteractor extends StateNotifier<AsyncValue<List<Action>>> {
 
   Future<void> getAllActionList() async {
     final actions = await _repository.findAll();
-    state = AsyncData(actions);
+    state = AsyncData(ActionInteractorState(actions: actions));
   }
 
   Future<void> createAction({required String name}) async {
@@ -33,9 +36,10 @@ class ActionInteractor extends StateNotifier<AsyncValue<List<Action>>> {
       await _repository.save(action);
       final asyncValue = state.data;
       if (asyncValue != null) {
-        final actions = asyncValue.value;
-        actions.add(action);
-        state = AsyncData(actions);
+        final actions = asyncValue.value.actions;
+        state = AsyncData(asyncValue.value.copyWith(
+          actions: [...actions, action],
+        ));
       }
     }
   }
@@ -47,12 +51,14 @@ class ActionInteractor extends StateNotifier<AsyncValue<List<Action>>> {
     await _repository.update(newAction);
     final asyncValue = state.data;
     if (asyncValue != null) {
-      final actions = asyncValue.value;
+      final actions = asyncValue.value.actions;
       final index = actions.indexWhere(
         (element) => element.id == id,
       );
       actions[index] = newAction;
-      state = AsyncData(actions);
+      state = AsyncData(
+        asyncValue.value.copyWith(actions: actions),
+      );
     }
   }
 
@@ -60,9 +66,11 @@ class ActionInteractor extends StateNotifier<AsyncValue<List<Action>>> {
     await _repository.delete(id);
     final asyncValue = state.data;
     if (asyncValue != null) {
-      final actions = asyncValue.value;
+      final actions = asyncValue.value.actions;
       actions.removeWhere((element) => element.id == id);
-      state = AsyncData(actions);
+      state = AsyncData(
+        asyncValue.value.copyWith(actions: actions),
+      );
     }
   }
 
