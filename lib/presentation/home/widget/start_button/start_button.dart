@@ -17,13 +17,28 @@ class StartButton extends ConsumerWidget {
     final isEnabled = ref.watch(startButtonController).state.isEnabled;
     return LargeButton(
       text: localization.start,
-      onPressed: () {
-        if (isEnabled) {
-          NavigatorUtil.push(context, page: const SlotPage());
-        } else {
-          // TODO: アラートダイアログの表示
-        }
-      },
+      onPressed: isEnabled
+          ? () => NavigatorUtil.push(context, page: const SlotPage())
+          : () => showError(context, localization),
+    );
+  }
+
+  /// エラーテキストの表示
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showError(
+    BuildContext context,
+    AppLocalization localization,
+  ) {
+    return ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          localization.startErrorText(
+            localization.gameSettingTitle,
+            localization.player,
+            localization.action,
+          ),
+        ),
+        duration: const Duration(seconds: 3),
+      ),
     );
   }
 }
