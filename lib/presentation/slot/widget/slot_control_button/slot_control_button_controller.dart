@@ -33,11 +33,11 @@ class SlotControlButtonController
     state = state.copyWith(isEnabled: false);
     Future.wait([
       _reader(slotListItemController(SlotListItemType.player).notifier)
-          .endlessChange(),
+          .startSlot(),
       _reader(slotListItemController(SlotListItemType.target).notifier)
-          .endlessChange(),
+          .startSlot(),
       _reader(slotListItemController(SlotListItemType.action).notifier)
-          .endlessChange(),
+          .startSlot(),
     ]);
   }
 

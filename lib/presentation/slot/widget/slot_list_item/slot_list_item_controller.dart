@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:isolate';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:random_slot_game/presentation/slot/widget/slot_list/slot_list_controller.dart';
+import 'package:random_slot_game/interactor/slot_interactor/slot_interactor_provider.dart';
 import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item_state.dart';
 
 final slotListItemController = StateNotifierProvider.autoDispose
@@ -12,22 +12,18 @@ final slotListItemController = StateNotifierProvider.autoDispose
       /// dispose時にisolateをkill
       _isolates[type]?.kill();
     });
-    final listState = ref.watch(slotListController).state;
-    final state =
-        listState.itemStates.singleWhere((element) => element.type == type);
-    return SlotListItemController(state, ref.read);
+    final slot = ref.watch(slotInteractorProvider).slot;
+    final state = SlotListItemState.from(slot, type);
+    return SlotListItemController(state);
   },
 );
 
 class SlotListItemController extends StateNotifier<SlotListItemState> {
   SlotListItemController(
     SlotListItemState state,
-    this._reader,
   ) : super(state);
 
-  final Reader _reader;
-
-  Future<void> endlessChange() async {
+  Future<void> startSlot() async {
     final receivePort = ReceivePort();
     receivePort.listen((message) {
       final String value = message;
