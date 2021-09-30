@@ -1,4 +1,4 @@
-package com.example.random_slot_game
+package com.koudai.random_slot
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.random_slot_game">
+    package="com.koudai.random_slot">
    <application
-        android:label="random_slot_game"
+        android:label="むちゃぶりスロット"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
