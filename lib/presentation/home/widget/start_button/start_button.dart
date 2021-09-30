@@ -15,7 +15,7 @@ class StartButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = AppLocalization.of(context)!;
-    final isEnabled = ref.read(startButtonController).state.isEnabled;
+    final isEnabled = ref.watch(startButtonController).state.isEnabled;
     final controller = ref.read(startButtonController);
     return LargeButton(
       text: localization.start,

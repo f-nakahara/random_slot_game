@@ -27,9 +27,10 @@ final startButtonController = Provider.autoDispose<StartButtonController>(
 );
 
 class StartButtonController {
-  StartButtonController(
-      {required this.state, required SlotInteractor interactor})
-      : _interactor = interactor;
+  StartButtonController({
+    required this.state,
+    required SlotInteractor interactor,
+  }) : _interactor = interactor;
 
   final StartButtonState state;
   final SlotInteractor _interactor;
