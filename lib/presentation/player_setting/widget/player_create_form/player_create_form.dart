@@ -15,18 +15,21 @@ class PlayerCreateForm extends HookConsumerWidget {
     final textEditingController = useTextEditingController();
     final localization = AppLocalization.of(context)!;
     final isEnable = ref.watch(playerCreateFormController).isEnabled;
-    return TextFormDialog(
-      onSaved: isEnable
-          ? () async {
-              await controller.create(name: textEditingController.text);
-              NavigatorUtil.pop(context);
-            }
-          : null,
-      title: localization.createTitle(localization.player),
-      controller: textEditingController,
-      validator: (value) => controller.validate(value, localization),
-      maxLength: controller.maxNameLength,
-      onChanged: (value) => controller.onChanged(value, localization),
+    return GestureDetector(
+      onTap: FocusScope.of(context).unfocus,
+      child: TextFormDialog(
+        onSaved: isEnable
+            ? () async {
+                await controller.create(name: textEditingController.text);
+                NavigatorUtil.pop(context);
+              }
+            : null,
+        title: localization.createTitle(localization.player),
+        controller: textEditingController,
+        validator: (value) => controller.validate(value, localization),
+        maxLength: controller.maxNameLength,
+        onChanged: (value) => controller.onChanged(value, localization),
+      ),
     );
   }
 }
