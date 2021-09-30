@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SlotListItemStateTearOff {
   const _$SlotListItemStateTearOff();
 
-  _SlotListItemState call(
+  _SlotListItemState _(
       {required SlotListItemType type,
       required String value,
       required List<String> values,
@@ -166,7 +166,7 @@ class _$_SlotListItemState implements _SlotListItemState {
 
   @override
   String toString() {
-    return 'SlotListItemState(type: $type, value: $value, values: $values, isStopped: $isStopped)';
+    return 'SlotListItemState._(type: $type, value: $value, values: $values, isStopped: $isStopped)';
   }
 
   @override

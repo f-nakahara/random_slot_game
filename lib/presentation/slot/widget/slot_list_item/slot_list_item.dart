@@ -11,11 +11,10 @@ class SlotListItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(slotListItemController(type));
-    final controller = ref.read(slotListItemController(type).notifier);
+    final value = ref.watch(slotListItemController(type)).value;
     return Row(
       children: [
-        Expanded(child: Text(state.value)),
+        Expanded(child: Text(value)),
         SlotStopButton(
           type: type,
         ),

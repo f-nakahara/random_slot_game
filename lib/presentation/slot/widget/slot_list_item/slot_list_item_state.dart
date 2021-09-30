@@ -9,7 +9,7 @@ class SlotListItemState with _$SlotListItemState {
     required SlotListItemType type,
     required String value,
     required List<String> values,
-    @Default(true) isStopped,
+    required bool isStopped,
   }) = _SlotListItemState;
 
   factory SlotListItemState.from(Slot slot, SlotListItemType type) {
@@ -29,6 +29,7 @@ class SlotListItemState with _$SlotListItemState {
       type: type,
       value: values[0],
       values: values,
+      isStopped: true,
     );
   }
 }
