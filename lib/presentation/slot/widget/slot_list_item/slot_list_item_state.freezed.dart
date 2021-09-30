@@ -18,10 +18,15 @@ class _$SlotListItemStateTearOff {
   const _$SlotListItemStateTearOff();
 
   _SlotListItemState call(
-      {required SlotListItemType type, required String value}) {
+      {required SlotListItemType type,
+      required String value,
+      required List<String> values,
+      dynamic isStopped = true}) {
     return _SlotListItemState(
       type: type,
       value: value,
+      values: values,
+      isStopped: isStopped,
     );
   }
 }
@@ -33,6 +38,8 @@ const $SlotListItemState = _$SlotListItemStateTearOff();
 mixin _$SlotListItemState {
   SlotListItemType get type => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
+  List<String> get values => throw _privateConstructorUsedError;
+  dynamic get isStopped => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SlotListItemStateCopyWith<SlotListItemState> get copyWith =>
@@ -44,7 +51,11 @@ abstract class $SlotListItemStateCopyWith<$Res> {
   factory $SlotListItemStateCopyWith(
           SlotListItemState value, $Res Function(SlotListItemState) then) =
       _$SlotListItemStateCopyWithImpl<$Res>;
-  $Res call({SlotListItemType type, String value});
+  $Res call(
+      {SlotListItemType type,
+      String value,
+      List<String> values,
+      dynamic isStopped});
 }
 
 /// @nodoc
@@ -60,6 +71,8 @@ class _$SlotListItemStateCopyWithImpl<$Res>
   $Res call({
     Object? type = freezed,
     Object? value = freezed,
+    Object? values = freezed,
+    Object? isStopped = freezed,
   }) {
     return _then(_value.copyWith(
       type: type == freezed
@@ -70,6 +83,14 @@ class _$SlotListItemStateCopyWithImpl<$Res>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
+      values: values == freezed
+          ? _value.values
+          : values // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      isStopped: isStopped == freezed
+          ? _value.isStopped
+          : isStopped // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
@@ -81,7 +102,11 @@ abstract class _$SlotListItemStateCopyWith<$Res>
           _SlotListItemState value, $Res Function(_SlotListItemState) then) =
       __$SlotListItemStateCopyWithImpl<$Res>;
   @override
-  $Res call({SlotListItemType type, String value});
+  $Res call(
+      {SlotListItemType type,
+      String value,
+      List<String> values,
+      dynamic isStopped});
 }
 
 /// @nodoc
@@ -99,6 +124,8 @@ class __$SlotListItemStateCopyWithImpl<$Res>
   $Res call({
     Object? type = freezed,
     Object? value = freezed,
+    Object? values = freezed,
+    Object? isStopped = freezed,
   }) {
     return _then(_SlotListItemState(
       type: type == freezed
@@ -109,6 +136,11 @@ class __$SlotListItemStateCopyWithImpl<$Res>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
+      values: values == freezed
+          ? _value.values
+          : values // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      isStopped: isStopped == freezed ? _value.isStopped : isStopped,
     ));
   }
 }
@@ -116,16 +148,25 @@ class __$SlotListItemStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SlotListItemState implements _SlotListItemState {
-  const _$_SlotListItemState({required this.type, required this.value});
+  const _$_SlotListItemState(
+      {required this.type,
+      required this.value,
+      required this.values,
+      this.isStopped = true});
 
   @override
   final SlotListItemType type;
   @override
   final String value;
+  @override
+  final List<String> values;
+  @JsonKey(defaultValue: true)
+  @override
+  final dynamic isStopped;
 
   @override
   String toString() {
-    return 'SlotListItemState(type: $type, value: $value)';
+    return 'SlotListItemState(type: $type, value: $value, values: $values, isStopped: $isStopped)';
   }
 
   @override
@@ -135,14 +176,21 @@ class _$_SlotListItemState implements _SlotListItemState {
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.value, value) ||
-                const DeepCollectionEquality().equals(other.value, value)));
+                const DeepCollectionEquality().equals(other.value, value)) &&
+            (identical(other.values, values) ||
+                const DeepCollectionEquality().equals(other.values, values)) &&
+            (identical(other.isStopped, isStopped) ||
+                const DeepCollectionEquality()
+                    .equals(other.isStopped, isStopped)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(value);
+      const DeepCollectionEquality().hash(value) ^
+      const DeepCollectionEquality().hash(values) ^
+      const DeepCollectionEquality().hash(isStopped);
 
   @JsonKey(ignore: true)
   @override
@@ -153,12 +201,18 @@ class _$_SlotListItemState implements _SlotListItemState {
 abstract class _SlotListItemState implements SlotListItemState {
   const factory _SlotListItemState(
       {required SlotListItemType type,
-      required String value}) = _$_SlotListItemState;
+      required String value,
+      required List<String> values,
+      dynamic isStopped}) = _$_SlotListItemState;
 
   @override
   SlotListItemType get type => throw _privateConstructorUsedError;
   @override
   String get value => throw _privateConstructorUsedError;
+  @override
+  List<String> get values => throw _privateConstructorUsedError;
+  @override
+  dynamic get isStopped => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SlotListItemStateCopyWith<_SlotListItemState> get copyWith =>

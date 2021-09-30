@@ -7,6 +7,8 @@ class SlotListItemState with _$SlotListItemState {
   const factory SlotListItemState({
     required SlotListItemType type,
     required String value,
+    required List<String> values,
+    @Default(true) isStopped,
   }) = _SlotListItemState;
 }
 
