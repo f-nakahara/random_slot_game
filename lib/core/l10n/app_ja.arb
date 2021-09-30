@@ -50,5 +50,13 @@
     "placeholders": {
       "start": {}
     }
+  },
+  "startErrorText": "「{setting}」から「{subject1}」と「{subject2}」を作成してください。",
+  "@startErrorText": {
+    "placeholders": {
+      "setting": {},
+      "subject1": {},
+      "subject2": {}
+    }
   }
 }

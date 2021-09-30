@@ -72,4 +72,9 @@ class AppLocalizationEn extends AppLocalization {
   String startIntroductionStep2(Object start) {
     return 'Tap Start to 「$start」 the game!';
   }
+
+  @override
+  String startErrorText(Object setting, Object subject1, Object subject2) {
+    return 'Create 「$subject1」 and 「$subject2」 from the 「$setting」.';
+  }
 }

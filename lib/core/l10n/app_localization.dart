@@ -201,6 +201,12 @@ abstract class AppLocalization {
   /// In en, this message translates to:
   /// **'Tap Start to 「{start}」 the game!'**
   String startIntroductionStep2(Object start);
+
+  /// No description provided for @startErrorText.
+  ///
+  /// In en, this message translates to:
+  /// **'Create 「{subject1}」 and 「{subject2}」 from the 「{setting}」.'**
+  String startErrorText(Object setting, Object subject1, Object subject2);
 }
 
 class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
