@@ -58,5 +58,8 @@
       "subject1": {},
       "subject2": {}
     }
-  }
+  },
+  "stop": "STOP",
+  "play": "PLAY",
+  "replay": "REPLAY"
 }

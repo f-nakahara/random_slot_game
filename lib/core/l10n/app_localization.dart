@@ -207,6 +207,12 @@ abstract class AppLocalization {
   /// In en, this message translates to:
   /// **'Create 「{subject1}」 and 「{subject2}」 from the 「{setting}」.'**
   String startErrorText(Object setting, Object subject1, Object subject2);
+
+  /// No description provided for @stop.
+  ///
+  /// In en, this message translates to:
+  /// **'STOP'**
+  String get stop;
 }
 
 class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

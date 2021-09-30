@@ -77,4 +77,7 @@ class AppLocalizationJa extends AppLocalization {
   String startErrorText(Object setting, Object subject1, Object subject2) {
     return '「$setting」から「$subject1」と「$subject2」を作成してください。';
   }
+
+  @override
+  String get stop => 'STOP';
 }
