@@ -5,8 +5,9 @@ import 'package:random_slot_game/presentation/action_setting/widget/action_list/
 final actionListController = Provider<ActionListController>((ref) {
   final asyncValue = ref.watch(actionInteractorProvider);
   return asyncValue.when(
-    data: (penalties) {
-      final state = ActionListState.from(penalties);
+    data: (data) {
+      final actions = data.actions;
+      final state = ActionListState.from(actions);
       return ActionListController(state: AsyncData(state));
     },
     loading: () {

@@ -5,12 +5,6 @@ part 'slot_control_button_state.freezed.dart';
 @freezed
 class SlotControlButtonState with _$SlotControlButtonState {
   const factory SlotControlButtonState({
-    @Default(SlotControlButtonType.play) SlotControlButtonType type,
+    @Default(true) bool isEnabled,
   }) = _SlotControlButtonState;
-}
-
-enum SlotControlButtonType {
-  play,
-  stop,
-  replay,
 }

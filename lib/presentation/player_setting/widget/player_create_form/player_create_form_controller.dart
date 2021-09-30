@@ -7,7 +7,8 @@ import 'package:random_slot_game/presentation/player_setting/widget/player_creat
 final playerCreateFormController = StateNotifierProvider.autoDispose<
     PlayerCreateFormController, PlayerCreateFormState>(
   (ref) {
-    final players = ref.watch(playerInteractorProvider).data?.value ?? [];
+    final players =
+        ref.watch(playerInteractorProvider).data?.value.players ?? [];
     final playerNames = players.map((e) => e.name).toList();
     return PlayerCreateFormController(
       ref.read(playerInteractorProvider.notifier),

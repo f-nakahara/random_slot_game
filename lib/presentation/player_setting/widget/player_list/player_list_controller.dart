@@ -5,8 +5,8 @@ import 'package:random_slot_game/presentation/player_setting/widget/player_list/
 final playerListController = Provider<PlayerListController>((ref) {
   final asyncValue = ref.watch(playerInteractorProvider);
   return asyncValue.when(
-    data: (players) {
-      final state = PlayerListState.from(players);
+    data: (data) {
+      final state = PlayerListState.from(data.players);
       return PlayerListController(state: AsyncData(state));
     },
     loading: () {

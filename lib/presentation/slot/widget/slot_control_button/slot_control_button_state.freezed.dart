@@ -17,10 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SlotControlButtonStateTearOff {
   const _$SlotControlButtonStateTearOff();
 
-  _SlotControlButtonState call(
-      {SlotControlButtonType type = SlotControlButtonType.play}) {
+  _SlotControlButtonState call({bool isEnabled = true}) {
     return _SlotControlButtonState(
-      type: type,
+      isEnabled: isEnabled,
     );
   }
 }
@@ -30,7 +29,7 @@ const $SlotControlButtonState = _$SlotControlButtonStateTearOff();
 
 /// @nodoc
 mixin _$SlotControlButtonState {
-  SlotControlButtonType get type => throw _privateConstructorUsedError;
+  bool get isEnabled => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SlotControlButtonStateCopyWith<SlotControlButtonState> get copyWith =>
@@ -42,7 +41,7 @@ abstract class $SlotControlButtonStateCopyWith<$Res> {
   factory $SlotControlButtonStateCopyWith(SlotControlButtonState value,
           $Res Function(SlotControlButtonState) then) =
       _$SlotControlButtonStateCopyWithImpl<$Res>;
-  $Res call({SlotControlButtonType type});
+  $Res call({bool isEnabled});
 }
 
 /// @nodoc
@@ -56,13 +55,13 @@ class _$SlotControlButtonStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
+    Object? isEnabled = freezed,
   }) {
     return _then(_value.copyWith(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as SlotControlButtonType,
+      isEnabled: isEnabled == freezed
+          ? _value.isEnabled
+          : isEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -74,7 +73,7 @@ abstract class _$SlotControlButtonStateCopyWith<$Res>
           $Res Function(_SlotControlButtonState) then) =
       __$SlotControlButtonStateCopyWithImpl<$Res>;
   @override
-  $Res call({SlotControlButtonType type});
+  $Res call({bool isEnabled});
 }
 
 /// @nodoc
@@ -90,13 +89,13 @@ class __$SlotControlButtonStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? type = freezed,
+    Object? isEnabled = freezed,
   }) {
     return _then(_SlotControlButtonState(
-      type: type == freezed
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as SlotControlButtonType,
+      isEnabled: isEnabled == freezed
+          ? _value.isEnabled
+          : isEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -104,28 +103,29 @@ class __$SlotControlButtonStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SlotControlButtonState implements _SlotControlButtonState {
-  const _$_SlotControlButtonState({this.type = SlotControlButtonType.play});
+  const _$_SlotControlButtonState({this.isEnabled = true});
 
-  @JsonKey(defaultValue: SlotControlButtonType.play)
+  @JsonKey(defaultValue: true)
   @override
-  final SlotControlButtonType type;
+  final bool isEnabled;
 
   @override
   String toString() {
-    return 'SlotControlButtonState(type: $type)';
+    return 'SlotControlButtonState(isEnabled: $isEnabled)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SlotControlButtonState &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)));
+            (identical(other.isEnabled, isEnabled) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEnabled, isEnabled)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(type);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isEnabled);
 
   @JsonKey(ignore: true)
   @override
@@ -135,11 +135,11 @@ class _$_SlotControlButtonState implements _SlotControlButtonState {
 }
 
 abstract class _SlotControlButtonState implements SlotControlButtonState {
-  const factory _SlotControlButtonState({SlotControlButtonType type}) =
+  const factory _SlotControlButtonState({bool isEnabled}) =
       _$_SlotControlButtonState;
 
   @override
-  SlotControlButtonType get type => throw _privateConstructorUsedError;
+  bool get isEnabled => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SlotControlButtonStateCopyWith<_SlotControlButtonState> get copyWith =>

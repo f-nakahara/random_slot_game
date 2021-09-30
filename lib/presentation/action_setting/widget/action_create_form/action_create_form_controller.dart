@@ -7,11 +7,12 @@ import 'package:random_slot_game/presentation/action_setting/widget/action_creat
 final actionCreateFormController = StateNotifierProvider.autoDispose<
     ActionCreateFormController, ActionCreateFormState>(
   (ref) {
-    final penalties = ref.watch(actionInteractorProvider).data?.value ?? [];
-    final playerNames = penalties.map((e) => e.name).toList();
+    final actions =
+        ref.watch(actionInteractorProvider).data?.value.actions ?? [];
+    final actionNames = actions.map((e) => e.name).toList();
     return ActionCreateFormController(
       ref.read(actionInteractorProvider.notifier),
-      playerNames: playerNames,
+      actionNames: actionNames,
     );
   },
 );
@@ -19,13 +20,13 @@ final actionCreateFormController = StateNotifierProvider.autoDispose<
 class ActionCreateFormController extends StateNotifier<ActionCreateFormState> {
   ActionCreateFormController(
     this._interactor, {
-    required List<String> playerNames,
-  })  : _penaltyNames = playerNames,
+    required List<String> actionNames,
+  })  : _actionNames = actionNames,
         super(const ActionCreateFormState());
 
   final ActionInteractor _interactor;
   final maxNameLength = 100;
-  final List<String> _penaltyNames;
+  final List<String> _actionNames;
 
   /// プレイヤーを作成する
   Future<void> create({required String name}) async {
@@ -38,7 +39,7 @@ class ActionCreateFormController extends StateNotifier<ActionCreateFormState> {
       return localization.emptyErrorText;
     } else if (value.length > maxNameLength) {
       return localization.maxLengthErrorText(maxNameLength);
-    } else if (_penaltyNames.contains(value)) {
+    } else if (_actionNames.contains(value)) {
       return localization.duplicateErrorText;
     }
   }
