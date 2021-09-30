@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:random_slot_game/core/constant/app_constant.dart';
 import 'package:random_slot_game/presentation/slot/widget/slot_control_button/slot_control_button.dart';
-import 'package:random_slot_game/presentation/slot/widget/slot_list/slot_list.dart';
+import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item.dart';
+import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item_state.dart';
 
 /// スロット画面
 class SlotPage extends StatelessWidget {
@@ -25,6 +26,23 @@ class SlotPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class SlotList extends StatelessWidget {
+  const SlotList({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: const [
+        SlotListItem(SlotListItemType.player),
+        SlotListItem(SlotListItemType.target),
+        SlotListItem(SlotListItemType.action),
+      ],
     );
   }
 }
