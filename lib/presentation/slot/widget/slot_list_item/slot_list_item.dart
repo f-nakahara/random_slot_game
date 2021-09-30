@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:random_slot_game/core/l10n/app_localization.dart';
 import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item_controller.dart';
 import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item_state.dart';
 
@@ -10,6 +11,7 @@ class SlotListItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final localization = AppLocalization.of(context)!;
     final state = ref.watch(slotListItemController(type));
     return Row(
       children: [
@@ -21,7 +23,7 @@ class SlotListItem extends ConsumerWidget {
               borderRadius: BorderRadius.circular(15),
             ),
           ),
-          child: Text('STOP'),
+          child: Text(localization.stop),
         ),
       ],
     );
