@@ -213,6 +213,24 @@ abstract class AppLocalization {
   /// In en, this message translates to:
   /// **'STOP'**
   String get stop;
+
+  /// No description provided for @play.
+  ///
+  /// In en, this message translates to:
+  /// **'PLAY'**
+  String get play;
+
+  /// No description provided for @replay.
+  ///
+  /// In en, this message translates to:
+  /// **'REPLAY'**
+  String get replay;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
 }
 
 class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

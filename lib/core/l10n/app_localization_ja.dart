@@ -80,4 +80,13 @@ class AppLocalizationJa extends AppLocalization {
 
   @override
   String get stop => 'STOP';
+
+  @override
+  String get play => 'PLAY';
+
+  @override
+  String get replay => 'REPLAY';
+
+  @override
+  String get loading => '準備中';
 }

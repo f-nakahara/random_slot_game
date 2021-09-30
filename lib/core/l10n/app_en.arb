@@ -61,5 +61,6 @@
   },
   "stop": "STOP",
   "play": "PLAY",
-  "replay": "REPLAY"
+  "replay": "REPLAY",
+  "loading": "Loading"
 }
