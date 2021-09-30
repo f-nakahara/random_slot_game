@@ -1,11 +1,8 @@
 import 'dart:async';
 import 'dart:isolate';
-import 'dart:math';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:random_slot_game/interactor/action/action_interactor_provider.dart';
-import 'package:random_slot_game/interactor/player/player_interactor_provider.dart';
-import 'package:random_slot_game/interactor/target/target_interactor_provider.dart';
+import 'package:random_slot_game/presentation/slot/widget/slot_list/slot_list_controller.dart';
 import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item_state.dart';
 
 final slotListItemController = StateNotifierProvider.autoDispose
@@ -15,56 +12,20 @@ final slotListItemController = StateNotifierProvider.autoDispose
       /// dispose時にisolateをkill
       _isolates[type]?.kill();
     });
-    late final List<String> values;
-    switch (type) {
-      case SlotListItemType.player:
-        values = ref
-                .watch(playerInteractorProvider)
-                .data
-                ?.value
-                .map((e) => e.name)
-                .toList() ??
-            [];
-        break;
-      case SlotListItemType.target:
-        values = ref
-                .watch(targetInteractorProvider)
-                .data
-                ?.value
-                .map((e) => e.name)
-                .toList() ??
-            [];
-        break;
-      case SlotListItemType.action:
-        values = ref
-                .watch(actionInteractorProvider)
-                .data
-                ?.value
-                .map((e) => e.name)
-                .toList() ??
-            [];
-    }
-    final value = values[Random().nextInt(values.length)];
-    final state = SlotListItemState(type: type, value: value);
-    return SlotListItemController(
-      state,
-      values: values,
-      type: type,
-    );
+    final listState = ref.watch(slotListController).state;
+    final state =
+        listState.itemStates.singleWhere((element) => element.type == type);
+    return SlotListItemController(state, ref.read);
   },
 );
 
 class SlotListItemController extends StateNotifier<SlotListItemState> {
   SlotListItemController(
-    SlotListItemState state, {
-    required this.values,
-    required this.type,
-  }) : super(state) {
-    endlessChange();
-  }
+    SlotListItemState state,
+    this._reader,
+  ) : super(state);
 
-  final List<String> values;
-  final SlotListItemType type;
+  final Reader _reader;
 
   Future<void> endlessChange() async {
     final receivePort = ReceivePort();
@@ -74,8 +35,15 @@ class SlotListItemController extends StateNotifier<SlotListItemState> {
         state = state.copyWith(value: value);
       }
     });
-    final param = _Param(parentPort: receivePort.sendPort, values: values);
-    _isolates[type] = await Isolate.spawn(_generateValue, param);
+    final param =
+        _Param(parentPort: receivePort.sendPort, values: state.values);
+    _isolates[state.type] = await Isolate.spawn(_generateValue, param);
+    state = state.copyWith(isStopped: false);
+  }
+
+  Future<void> stopSlot() async {
+    state = state.copyWith(isStopped: true);
+    _isolates[state.type]?.kill();
   }
 }
 
