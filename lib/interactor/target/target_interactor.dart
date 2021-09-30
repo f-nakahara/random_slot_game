@@ -1,8 +1,10 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:random_slot_game/domain/entity/target/target.dart';
 import 'package:random_slot_game/domain/repository/i_target_repository.dart';
 
-class TargetInteractor extends StateNotifier<AsyncValue<List<Target>>> {
+import 'target_interactor_state.dart';
+
+class TargetInteractor
+    extends StateNotifier<AsyncValue<TargetInteractorState>> {
   TargetInteractor({
     required ITargetRepository repository,
   })  : _repository = repository,
@@ -12,6 +14,6 @@ class TargetInteractor extends StateNotifier<AsyncValue<List<Target>>> {
   /// 全てのターゲットを取得する
   Future<void> getAllTargetList() async {
     final targets = await _repository.findAll();
-    state = AsyncData(targets);
+    state = AsyncData(TargetInteractorState(targets: targets));
   }
 }
