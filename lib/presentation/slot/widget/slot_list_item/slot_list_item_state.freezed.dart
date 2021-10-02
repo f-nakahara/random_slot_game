@@ -21,7 +21,7 @@ class _$SlotListItemStateTearOff {
       {required SlotListItemType type,
       required String value,
       required List<String> values,
-      dynamic isStopped = true}) {
+      required bool isStopped}) {
     return _SlotListItemState(
       type: type,
       value: value,
@@ -39,7 +39,7 @@ mixin _$SlotListItemState {
   SlotListItemType get type => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
   List<String> get values => throw _privateConstructorUsedError;
-  dynamic get isStopped => throw _privateConstructorUsedError;
+  bool get isStopped => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SlotListItemStateCopyWith<SlotListItemState> get copyWith =>
@@ -55,7 +55,7 @@ abstract class $SlotListItemStateCopyWith<$Res> {
       {SlotListItemType type,
       String value,
       List<String> values,
-      dynamic isStopped});
+      bool isStopped});
 }
 
 /// @nodoc
@@ -90,7 +90,7 @@ class _$SlotListItemStateCopyWithImpl<$Res>
       isStopped: isStopped == freezed
           ? _value.isStopped
           : isStopped // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as bool,
     ));
   }
 }
@@ -106,7 +106,7 @@ abstract class _$SlotListItemStateCopyWith<$Res>
       {SlotListItemType type,
       String value,
       List<String> values,
-      dynamic isStopped});
+      bool isStopped});
 }
 
 /// @nodoc
@@ -140,7 +140,10 @@ class __$SlotListItemStateCopyWithImpl<$Res>
           ? _value.values
           : values // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      isStopped: isStopped == freezed ? _value.isStopped : isStopped,
+      isStopped: isStopped == freezed
+          ? _value.isStopped
+          : isStopped // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -152,7 +155,7 @@ class _$_SlotListItemState implements _SlotListItemState {
       {required this.type,
       required this.value,
       required this.values,
-      this.isStopped = true});
+      required this.isStopped});
 
   @override
   final SlotListItemType type;
@@ -160,9 +163,8 @@ class _$_SlotListItemState implements _SlotListItemState {
   final String value;
   @override
   final List<String> values;
-  @JsonKey(defaultValue: true)
   @override
-  final dynamic isStopped;
+  final bool isStopped;
 
   @override
   String toString() {
@@ -203,7 +205,7 @@ abstract class _SlotListItemState implements SlotListItemState {
       {required SlotListItemType type,
       required String value,
       required List<String> values,
-      dynamic isStopped}) = _$_SlotListItemState;
+      required bool isStopped}) = _$_SlotListItemState;
 
   @override
   SlotListItemType get type => throw _privateConstructorUsedError;
@@ -212,7 +214,7 @@ abstract class _SlotListItemState implements SlotListItemState {
   @override
   List<String> get values => throw _privateConstructorUsedError;
   @override
-  dynamic get isStopped => throw _privateConstructorUsedError;
+  bool get isStopped => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$SlotListItemStateCopyWith<_SlotListItemState> get copyWith =>

@@ -49,6 +49,7 @@ class StartButton extends ConsumerWidget {
           localization.startErrorText(
             localization.gameSettingTitle,
             localization.player,
+            localization.target,
             localization.action,
           ),
         ),
