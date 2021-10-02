@@ -1,6 +1,7 @@
 import 'package:path/path.dart';
 import 'package:random_slot_game/core/config/app_config.dart';
 import 'package:random_slot_game/core/exception/not_found_exception.dart';
+import 'package:random_slot_game/core/util/localization_util.dart';
 import 'package:random_slot_game/domain/entity/player/player.dart';
 import 'package:random_slot_game/infrastructure/datasource/player_sqflite/i_player_sqflite.dart';
 import 'package:random_slot_game/infrastructure/datasource/player_sqflite/model/sqf_player.dart';
@@ -119,11 +120,37 @@ class PlayerSqflite implements IPlayerSqflite {
           )
           ''',
           );
+          await _saveDefaultValue(db);
         },
       );
       return db;
     } catch (e) {
       rethrow;
+    }
+  }
+
+  Future<void> _saveDefaultValue(Database db) async {
+    final date = DateTime.now();
+    final localization = LocalizationUtil.localization;
+    final defaultValues = [
+      Player(
+        id: '1',
+        name: localization.defaultPlayerName1,
+        isSelected: true,
+        createdAt: date,
+        updatedAt: date,
+      ),
+      Player(
+        id: '2',
+        name: localization.defaultPlayerName2,
+        isSelected: true,
+        createdAt: date,
+        updatedAt: date,
+      ),
+    ];
+    for (var value in defaultValues) {
+      final data = SQFPlayer.convertToMap(value);
+      await db.insert(_tableName, data);
     }
   }
 }

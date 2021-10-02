@@ -1,6 +1,7 @@
 import 'package:path/path.dart';
 import 'package:random_slot_game/core/config/app_config.dart';
 import 'package:random_slot_game/core/exception/not_found_exception.dart';
+import 'package:random_slot_game/core/util/localization_util.dart';
 import 'package:random_slot_game/domain/entity/action/action.dart';
 import 'package:random_slot_game/infrastructure/datasource/action_sqflite/i_action_sqflite.dart';
 import 'package:random_slot_game/infrastructure/datasource/action_sqflite/model/sqf_action.dart';
@@ -119,11 +120,37 @@ class ActionSqflite implements IActionSqflite {
           )
           ''',
           );
+          await _saveDefaultValue(db);
         },
       );
       return db;
     } catch (e) {
       rethrow;
+    }
+  }
+
+  Future<void> _saveDefaultValue(Database db) async {
+    final date = DateTime.now();
+    final localization = LocalizationUtil.localization;
+    final defaultValues = [
+      Action(
+        id: '1',
+        name: localization.defaultActionName1,
+        isSelected: true,
+        createdAt: date,
+        updatedAt: date,
+      ),
+      Action(
+        id: '2',
+        name: localization.defaultActionName2,
+        isSelected: true,
+        createdAt: date,
+        updatedAt: date,
+      ),
+    ];
+    for (var value in defaultValues) {
+      final data = SQFAction.convertToMap(value);
+      await db.insert(_tableName, data);
     }
   }
 }
