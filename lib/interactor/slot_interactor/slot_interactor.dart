@@ -6,7 +6,9 @@ import 'slot_interactor_state.dart';
 class SlotInteractor extends StateNotifier<SlotInteractorState> {
   SlotInteractor({required ISlotRepository repository})
       : _repository = repository,
-        super(const SlotInteractorState());
+        super(const SlotInteractorState()) {
+    getSlot();
+  }
 
   final ISlotRepository _repository;
 

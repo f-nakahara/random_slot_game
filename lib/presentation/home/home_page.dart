@@ -52,6 +52,7 @@ class _Introduction extends StatelessWidget {
           stepNumber: 1,
           text: localization.startIntroductionStep1(
             localization.player,
+            localization.target,
             localization.action,
             localization.gameSettingTitle,
           ),
