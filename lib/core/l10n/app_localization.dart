@@ -106,6 +106,12 @@ abstract class AppLocalization {
   /// **'Action'**
   String get action;
 
+  /// No description provided for @target.
+  ///
+  /// In en, this message translates to:
+  /// **'Target'**
+  String get target;
+
   /// No description provided for @checkExplanation.
   ///
   /// In en, this message translates to:
@@ -193,8 +199,8 @@ abstract class AppLocalization {
   /// No description provided for @startIntroductionStep1.
   ///
   /// In en, this message translates to:
-  /// **'Determine the {player} and {penalty} game from the 「{gameSettingTitle}」.'**
-  String startIntroductionStep1(Object player, Object penalty, Object gameSettingTitle);
+  /// **'Determine the {player}, {target} and {action} game from the 「{gameSettingTitle}」.'**
+  String startIntroductionStep1(Object player, Object target, Object action, Object gameSettingTitle);
 
   /// No description provided for @startIntroductionStep2.
   ///
@@ -205,8 +211,8 @@ abstract class AppLocalization {
   /// No description provided for @startErrorText.
   ///
   /// In en, this message translates to:
-  /// **'Create 「{subject1}」 and 「{subject2}」 from the 「{setting}」.'**
-  String startErrorText(Object setting, Object subject1, Object subject2);
+  /// **'Create 「{subject1}」, 「{subject2}」 and 「{subject3}」 from the 「{setting}」.'**
+  String startErrorText(Object setting, Object subject1, Object subject2, Object subject3);
 
   /// No description provided for @stop.
   ///
@@ -231,6 +237,60 @@ abstract class AppLocalization {
   /// In en, this message translates to:
   /// **'Loading'**
   String get loading;
+
+  /// No description provided for @test.
+  ///
+  /// In en, this message translates to:
+  /// **'test'**
+  String get test;
+
+  /// No description provided for @defaultTargetName1.
+  ///
+  /// In en, this message translates to:
+  /// **'Only'**
+  String get defaultTargetName1;
+
+  /// No description provided for @defaultTargetName2.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get defaultTargetName2;
+
+  /// No description provided for @defaultTargetName3.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get defaultTargetName3;
+
+  /// No description provided for @defaultTargetName4.
+  ///
+  /// In en, this message translates to:
+  /// **'Everyone except'**
+  String get defaultTargetName4;
+
+  /// No description provided for @defaultPlayerName1.
+  ///
+  /// In en, this message translates to:
+  /// **'Player1'**
+  String get defaultPlayerName1;
+
+  /// No description provided for @defaultPlayerName2.
+  ///
+  /// In en, this message translates to:
+  /// **'Player2'**
+  String get defaultPlayerName2;
+
+  /// No description provided for @defaultActionName1.
+  ///
+  /// In en, this message translates to:
+  /// **'Chugging'**
+  String get defaultActionName1;
+
+  /// No description provided for @defaultActionName2.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell an interesting story'**
+  String get defaultActionName2;
 }
 
 class _AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

@@ -3,6 +3,7 @@
 
   "player": "プレイヤー",
   "action": "アクション",
+  "target": "ターゲット",
   "checkExplanation": "使用する{subject}にチェックを入れてください。",
   "@checkExplanation": {
     "placeholders": {
@@ -37,11 +38,12 @@
   "start": "はじめる",
   "gameSettingTitle": " ゲーム設定",
   "startIntroductionTitle": "はじめてプレイする方へ",
-  "startIntroductionStep1": "「{gameSettingTitle}」から{player}と{penalty}を決める。",
+  "startIntroductionStep1": "「{gameSettingTitle}」から{player}と{target}と{action}を決める。",
   "@startIntroductionStep1": {
     "placeholders": {
       "player": {},
-      "penalty": {},
+      "action": {},
+      "target": {},
       "gameSettingTitle": {}
     }
   },
@@ -51,16 +53,26 @@
       "start": {}
     }
   },
-  "startErrorText": "「{setting}」から「{subject1}」と「{subject2}」を作成してください。",
+  "startErrorText": "「{setting}」から「{subject1}」と「{subject2}」と「{subject3}」を作成してください。",
   "@startErrorText": {
     "placeholders": {
       "setting": {},
       "subject1": {},
-      "subject2": {}
+      "subject2": {},
+      "subject3": {}
     }
   },
   "stop": "STOP",
   "play": "PLAY",
   "replay": "REPLAY",
-  "loading": "準備中"
+  "loading": "準備中",
+  "test": "テスト",
+  "defaultTargetName1": "だけが",
+  "defaultTargetName2": "の左の人が",
+  "defaultTargetName3": "の右の人が",
+  "defaultTargetName4": "以外全員が",
+  "defaultPlayerName1": "プレイヤー1",
+  "defaultPlayerName2": "プレイヤー2",
+  "defaultActionName1": "一気飲みをする",
+  "defaultActionName2": "面白い話をする"
 }

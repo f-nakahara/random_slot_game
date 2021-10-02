@@ -3,6 +3,7 @@
 
   "player": "Player",
   "action": "Action",
+  "target": "Target",
   "checkExplanation": "Please check the {subject} to use.",
   "@checkExplanation": {
     "placeholders": {
@@ -37,11 +38,12 @@
   "start": "START",
   "gameSettingTitle": " Game Setting",
   "startIntroductionTitle": "For those who play for the first time",
-  "startIntroductionStep1": "Determine the {player} and {penalty} game from the 「{gameSettingTitle}」.",
+  "startIntroductionStep1": "Determine the {player}, {target} and {action} game from the 「{gameSettingTitle}」.",
   "@startIntroductionStep1": {
     "placeholders": {
       "player": {},
-      "penalty": {},
+      "target": {},
+      "action": {},
       "gameSettingTitle": {}
     }
   },
@@ -51,16 +53,26 @@
       "start": {}
     }
   },
-  "startErrorText": "Create 「{subject1}」 and 「{subject2}」 from the 「{setting}」.",
+  "startErrorText": "Create 「{subject1}」, 「{subject2}」 and 「{subject3}」 from the 「{setting}」.",
   "@startErrorText": {
     "placeholders": {
       "setting": {},
       "subject1": {},
-      "subject2": {}
+      "subject2": {},
+      "subject3": {}
     }
   },
   "stop": "STOP",
   "play": "PLAY",
   "replay": "REPLAY",
-  "loading": "Loading"
+  "loading": "Loading",
+  "test": "test",
+  "defaultTargetName1": "Only",
+  "defaultTargetName2": "Left",
+  "defaultTargetName3": "Right",
+  "defaultTargetName4": "Everyone except",
+  "defaultPlayerName1": "Player1",
+  "defaultPlayerName2": "Player2",
+  "defaultActionName1": "Chugging",
+  "defaultActionName2": "Tell an interesting story"
 }

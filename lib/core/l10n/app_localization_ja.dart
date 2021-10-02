@@ -14,6 +14,9 @@ class AppLocalizationJa extends AppLocalization {
   String get action => 'アクション';
 
   @override
+  String get target => 'ターゲット';
+
+  @override
   String checkExplanation(Object subject) {
     return '使用する$subjectにチェックを入れてください。';
   }
@@ -64,8 +67,8 @@ class AppLocalizationJa extends AppLocalization {
   String get startIntroductionTitle => 'はじめてプレイする方へ';
 
   @override
-  String startIntroductionStep1(Object player, Object penalty, Object gameSettingTitle) {
-    return '「$gameSettingTitle」から$playerと$penaltyを決める。';
+  String startIntroductionStep1(Object player, Object target, Object action, Object gameSettingTitle) {
+    return '「$gameSettingTitle」から$playerと$targetと$actionを決める。';
   }
 
   @override
@@ -74,8 +77,8 @@ class AppLocalizationJa extends AppLocalization {
   }
 
   @override
-  String startErrorText(Object setting, Object subject1, Object subject2) {
-    return '「$setting」から「$subject1」と「$subject2」を作成してください。';
+  String startErrorText(Object setting, Object subject1, Object subject2, Object subject3) {
+    return '「$setting」から「$subject1」と「$subject2」と「$subject3」を作成してください。';
   }
 
   @override
@@ -89,4 +92,31 @@ class AppLocalizationJa extends AppLocalization {
 
   @override
   String get loading => '準備中';
+
+  @override
+  String get test => 'テスト';
+
+  @override
+  String get defaultTargetName1 => 'だけが';
+
+  @override
+  String get defaultTargetName2 => 'の左の人が';
+
+  @override
+  String get defaultTargetName3 => 'の右の人が';
+
+  @override
+  String get defaultTargetName4 => '以外全員が';
+
+  @override
+  String get defaultPlayerName1 => 'プレイヤー1';
+
+  @override
+  String get defaultPlayerName2 => 'プレイヤー2';
+
+  @override
+  String get defaultActionName1 => '一気飲みをする';
+
+  @override
+  String get defaultActionName2 => '面白い話をする';
 }
