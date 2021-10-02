@@ -18,5 +18,5 @@ abstract class ITargetSqlite {
   Future<void> update(Target target);
 
   /// ターゲットの削除
-  Future<void> delete(SQFTarget id);
+  Future<void> delete(String id);
 }
