@@ -9,7 +9,7 @@ class LargeButton extends StatelessWidget {
   }) : super(key: key);
 
   final String text;
-  final Function() onPressed;
+  final Function()? onPressed;
   final bool isOutlined;
 
   static const double height = 80.0;

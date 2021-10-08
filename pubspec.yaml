@@ -25,6 +25,8 @@ dependencies:
   path: ^1.8.0
   dartz: ^0.10.0
   uuid: ^3.0.4
+  google_mobile_ads: ^0.13.5
+  package_info_plus: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -35,9 +37,12 @@ dev_dependencies:
   flutter_launcher_icons: ^0.9.2
 
 flutter_icons:
-  android: true
+  android: "launcher_icon"
   ios: true
-  image_path: "asset/image/icon.png"
+  image_path_android: "asset/image/android_icon.png"
+  image_path_ios: "asset/image/ios_icon.png"
+  adaptive_icon_background: "#843D0B"
+  adaptive_icon_foreground: "asset/image/icon.png"
 
 flutter:
   uses-material-design: true

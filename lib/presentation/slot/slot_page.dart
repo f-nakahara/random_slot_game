@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_slot_game/core/constant/app_constant.dart';
+import 'package:random_slot_game/presentation/common/banner_adsense.dart';
 import 'package:random_slot_game/presentation/slot/widget/slot_control_button/slot_control_button.dart';
 import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item.dart';
 import 'package:random_slot_game/presentation/slot/widget/slot_list_item/slot_list_item_state.dart';
@@ -23,6 +24,9 @@ class SlotPage extends StatelessWidget {
 
             /// スロット制御ボタン
             SlotControlButton(),
+
+            /// バナー広告
+            BannerAdsense(),
           ],
         ),
       ),

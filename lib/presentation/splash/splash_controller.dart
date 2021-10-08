@@ -1,3 +1,4 @@
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:random_slot_game/core/l10n/app_localization.dart';
 import 'package:random_slot_game/core/util/localization_util.dart';
@@ -22,6 +23,7 @@ class SplashController extends StateNotifier<bool> {
       _reader(targetInteractorProvider.notifier).getAllTargetList(),
       _reader(actionInteractorProvider.notifier).getAllActionList(),
       LocalizationUtil.init(localization),
+      MobileAds.instance.initialize(),
     ]);
     state = true;
   }

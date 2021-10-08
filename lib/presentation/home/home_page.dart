@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_slot_game/core/l10n/app_localization.dart';
+import 'package:random_slot_game/presentation/common/banner_adsense.dart';
 import 'package:random_slot_game/presentation/home/widget/game_setting_button/game_setting_button.dart';
 import 'package:random_slot_game/presentation/home/widget/start_button/start_button.dart';
 import 'package:sizer/sizer.dart';
@@ -27,6 +28,9 @@ class HomePage extends StatelessWidget {
 
               /// 設定ボタン
               GameSettingButton(),
+
+              /// バナー広告
+              BannerAdsense(),
             ],
           ),
         ),

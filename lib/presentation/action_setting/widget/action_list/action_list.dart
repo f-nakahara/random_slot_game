@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:random_slot_game/core/constant/app_constant.dart';
 import 'package:random_slot_game/presentation/action_setting/widget/action_list/action_list_controller.dart';
 import 'package:random_slot_game/presentation/action_setting/widget/action_list_item/action_list_item.dart';
+import 'package:random_slot_game/presentation/common/loading_indicator.dart';
 
 class ActionList extends ConsumerWidget {
   const ActionList({Key? key}) : super(key: key);
@@ -27,8 +28,8 @@ class ActionList extends ConsumerWidget {
           },
         );
       },
-      loading: () => Container(),
-      error: (error, stack) => Container(),
+      loading: () => const LoadingIndicator(),
+      error: (error, stack) => const SizedBox(), // TODO: エラー処理
     );
   }
 }

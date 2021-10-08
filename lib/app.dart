@@ -1,6 +1,7 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:random_slot_game/core/l10n/app_localization.dart';
+import 'package:random_slot_game/core/util/info_util.dart';
 import 'package:random_slot_game/presentation/splash/splash_page.dart';
 import 'package:sizer/sizer.dart';
 
@@ -14,7 +15,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) => MaterialApp(
-        title: 'Flutter Demo', // FIXME: タイトル変更
+        title: InfoUtil.info.appName,
+        debugShowCheckedModeBanner: false,
         theme: FlexColorScheme.dark(
           scheme: scheme,
         ).toTheme,

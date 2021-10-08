@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:random_slot_game/core/constant/app_constant.dart';
+import 'package:random_slot_game/presentation/common/loading_indicator.dart';
 import 'package:random_slot_game/presentation/target_setting/widget/target_list/target_list_controller.dart';
 import 'package:random_slot_game/presentation/target_setting/widget/target_list_item/target_list_item.dart';
 
@@ -27,8 +28,8 @@ class TargetList extends ConsumerWidget {
           },
         );
       },
-      loading: () => Container(),
-      error: (error, stack) => Container(),
+      loading: () => const LoadingIndicator(),
+      error: (error, stack) => const SizedBox(), // TODO: エラー処理
     );
   }
 }

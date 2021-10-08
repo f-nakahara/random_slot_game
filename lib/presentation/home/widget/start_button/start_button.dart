@@ -71,7 +71,7 @@ class _LoadingDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final localization = AppLocalization.of(context)!;
     WidgetsBinding.instance?.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 100));
       await controller.getSlot();
       Navigator.pop(context);
     });

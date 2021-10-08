@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:random_slot_game/core/l10n/app_localization.dart';
+import 'package:random_slot_game/presentation/common/loading_indicator.dart';
 import 'package:random_slot_game/presentation/home/home_page.dart';
 import 'package:random_slot_game/presentation/splash/splash_controller.dart';
 
@@ -19,8 +20,7 @@ class SplashPage extends ConsumerWidget {
           if (snapshot.connectionState == ConnectionState.done) {
             return const HomePage();
           }
-          // TODO: アプリアイコン等の表示
-          return Text('$runtimeType');
+          return const LoadingIndicator();
         },
       ),
     );

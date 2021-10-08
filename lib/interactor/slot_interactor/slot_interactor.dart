@@ -14,6 +14,8 @@ class SlotInteractor extends StateNotifier<SlotInteractorState> {
 
   Future<void> getSlot() async {
     final slot = await _repository.find();
-    state = state.copyWith(slot: slot);
+    if (mounted) {
+      state = state.copyWith(slot: slot);
+    }
   }
 }
